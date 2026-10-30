@@ -1,0 +1,14 @@
+{
+  "meta": { "owner": "Test", "startDate": "2026-11-02" },
+  "routines": { "morning": [{ "id": "brush", "label": "Brush teeth" }], "evening": null },
+  "training": { "weeklyDirectSets": null, "sessions": {} },
+  "nutrition": { "items": [
+    { "id": "banana", "kcal": 105 },
+    { "id": "sauce", "kcal": null, "protein": null }
+  ] },
+  "path": [{ "id": "ccp", "hours": 25 }],
+  "gates": [],
+  "jobSearch": {},
+  "unemployment": { "anchorDate": null },
+  "gamification": {}
+}

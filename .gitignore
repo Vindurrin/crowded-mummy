@@ -1,0 +1,4 @@
+node_modules/
+# Private data. App code only may be public.
+*-life-os-seed-data.json
+*-life-os-backup.json
