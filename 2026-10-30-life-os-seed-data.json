@@ -1,0 +1,706 @@
+{
+  "meta": {
+    "owner": "Matt",
+    "timezone": "America/Chicago",
+    "created": "2026-10-30",
+    "startDate": "2026-11-02",
+    "hoursPerDay": 4,
+    "daysPerWeek": 6,
+    "dayOff": "Sun",
+    "dayBlocksMin": {
+      "review": 20,
+      "focus": 150,
+      "log": 25,
+      "jobSearch": 45
+    },
+    "note": "4 h/day = study + build + job search. Gym and walking are separate. Dates are estimates; the app must recompute from real progress."
+  },
+  "routines": {
+    "morning": [
+      {
+        "order": 1,
+        "id": "brush",
+        "label": "Brush teeth"
+      },
+      {
+        "order": 2,
+        "id": "floss",
+        "label": "Floss"
+      },
+      {
+        "order": 3,
+        "id": "mouthwash",
+        "label": "Mouthwash"
+      },
+      {
+        "order": 4,
+        "id": "pills1",
+        "label": "Pills 1",
+        "gamify": false,
+        "note": "Checkbox only. No XP, no streak. Do not store drug names."
+      },
+      {
+        "order": 5,
+        "id": "move",
+        "label": "Gym (Mon/Wed/Fri) or walk (other days)"
+      },
+      {
+        "order": 6,
+        "id": "shave",
+        "label": "Shave"
+      },
+      {
+        "order": 7,
+        "id": "shower",
+        "label": "Shower"
+      },
+      {
+        "order": 8,
+        "id": "skin",
+        "label": "Skincare"
+      }
+    ],
+    "evening": null,
+    "eveningNote": "User has not listed an evening routine. Ask on first run; allow empty."
+  },
+  "training": {
+    "schedule": {
+      "Mon": "A",
+      "Wed": "B",
+      "Fri": "C"
+    },
+    "sessions": {
+      "A": {
+        "name": "Full Body A",
+        "days": [
+          "Mon"
+        ],
+        "exercises": [
+          {
+            "name": "Leg press",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Chest press",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Lat pulldown",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Leg curl",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Lateral raise",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Ab crunch",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          }
+        ],
+        "totalSets": 15
+      },
+      "B": {
+        "name": "Full Body B",
+        "days": [
+          "Wed"
+        ],
+        "exercises": [
+          {
+            "name": "Leg extension",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Leg curl",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Seated row",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Shoulder press",
+            "type": "compound",
+            "sets": 2,
+            "reps": 9
+          },
+          {
+            "name": "Pec fly",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Biceps curl",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Back extension",
+            "type": "accessory",
+            "sets": 2,
+            "reps": 15
+          }
+        ],
+        "totalSets": 15
+      },
+      "C": {
+        "name": "Full Body C",
+        "days": [
+          "Fri"
+        ],
+        "exercises": [
+          {
+            "name": "Leg press",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Chest press",
+            "type": "compound",
+            "sets": 3,
+            "reps": 9
+          },
+          {
+            "name": "Lat pulldown",
+            "type": "compound",
+            "sets": 2,
+            "reps": 9
+          },
+          {
+            "name": "Seated row",
+            "type": "compound",
+            "sets": 2,
+            "reps": 9
+          },
+          {
+            "name": "Leg curl",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Triceps press",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Rear delt",
+            "type": "isolation",
+            "sets": 2,
+            "reps": 15
+          },
+          {
+            "name": "Calf extension",
+            "type": "isolation",
+            "sets": 3,
+            "reps": 15
+          }
+        ],
+        "totalSets": 19
+      }
+    },
+    "baselines": {
+      "Leg press": {
+        "w": 180,
+        "done": "9x3"
+      },
+      "Chest press": {
+        "w": 60,
+        "done": "9x3"
+      },
+      "Lat pulldown": {
+        "w": 110,
+        "done": "9x2",
+        "note": "challenging"
+      },
+      "Seated row": {
+        "w": 70,
+        "done": "9x2"
+      },
+      "Leg curl": {
+        "w": 60,
+        "done": "15x2"
+      },
+      "Triceps press": {
+        "w": 100,
+        "done": "15x2"
+      },
+      "Rear delt": {
+        "w": 40,
+        "done": "15x2"
+      },
+      "Calf extension": {
+        "w": 180,
+        "done": "15x3"
+      }
+    },
+    "baselineDate": "2026-10-30",
+    "baselineSession": "C",
+    "cardio": {
+      "mph": 3.2,
+      "incline": 8,
+      "minutes": 30,
+      "daily": true
+    },
+    "neat": {
+      "milesMin": 5,
+      "milesMax": 6,
+      "note": "total daily walking target including cardio"
+    },
+    "progressionRule": "PROPOSED, confirm: if all prescribed reps on all sets are hit, add the smallest weight step next session. One working weight per exercise across all days.",
+    "weeklyDirectSets": null
+  },
+  "weighIn": {
+    "frequency": "daily",
+    "decisionMetric": "7-day average",
+    "note": "Daily readings are noisy. Judge progress and the stall ladder on the 7-day average. Baseline 159.2 lb on 2026-10-03.",
+    "goal": "140s lb, 1-2 lb per week",
+    "stallLadder": [
+      "After 2 flat weeks: +10 min treadmill and -200 kcal from carbs on rest days",
+      "Then make that cut daily",
+      "Then alternate -200 kcal or +10 min cardio, one change per stall"
+    ]
+  },
+  "nutrition": {
+    "items": [
+      {
+        "id": "energy",
+        "name": "Energy drink",
+        "qty": "1",
+        "kcal": 10,
+        "protein": 0,
+        "carbs": 2,
+        "fat": 0,
+        "fiber": 0,
+        "sodiumMg": 30,
+        "note": "before noon"
+      },
+      {
+        "id": "banana",
+        "name": "Banana",
+        "qty": "1",
+        "kcal": 105,
+        "protein": 1.3,
+        "carbs": 27,
+        "fat": 0.4,
+        "fiber": 3.1,
+        "sodiumMg": 1,
+        "note": "ASSUMED medium banana, not from a label"
+      },
+      {
+        "id": "peas",
+        "name": "Peas (frozen)",
+        "qty": "340 g",
+        "kcal": 280,
+        "protein": 20,
+        "carbs": 52,
+        "fat": 0,
+        "fiber": 16,
+        "sodiumMg": 260
+      },
+      {
+        "id": "mixveg",
+        "name": "Mixed vegetables (frozen)",
+        "qty": "340 g",
+        "kcal": 200,
+        "protein": 8,
+        "carbs": 44,
+        "fat": 0,
+        "fiber": 12,
+        "sodiumMg": 60
+      },
+      {
+        "id": "pasta",
+        "name": "Pasta, dry",
+        "qty": "112 g dry",
+        "kcal": 400,
+        "protein": 14,
+        "carbs": 82,
+        "fat": 2,
+        "fiber": 4,
+        "sodiumMg": 0
+      },
+      {
+        "id": "salmon",
+        "name": "Salmon, raw",
+        "qty": "112 g or more",
+        "kcal": 140,
+        "protein": 23,
+        "carbs": 0,
+        "fat": 5,
+        "fiber": 0,
+        "sodiumMg": 85,
+        "scalesWithWeight": true,
+        "labelWeightG": 112
+      },
+      {
+        "id": "chicken",
+        "name": "Chicken thighs, raw",
+        "qty": "560 g or more",
+        "kcal": 650,
+        "protein": 110,
+        "carbs": 0,
+        "fat": 22.5,
+        "fiber": 0,
+        "sodiumMg": 525,
+        "scalesWithWeight": true,
+        "labelWeightG": 560
+      },
+      {
+        "id": "creatine",
+        "name": "Creatine in water or Crystal Light",
+        "qty": "5 g or more",
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0,
+        "fiber": 0,
+        "sodiumMg": 0
+      },
+      {
+        "id": "oil",
+        "name": "Extra virgin olive oil (on pasta only)",
+        "qty": "1 tbsp",
+        "kcal": 119,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 13.5,
+        "fiber": 0,
+        "sodiumMg": 0,
+        "note": "typical value, not from a label"
+      },
+      {
+        "id": "teriyaki",
+        "name": "Teriyaki sauce",
+        "qty": "1 tbsp",
+        "kcal": null,
+        "protein": null,
+        "carbs": null,
+        "fat": null,
+        "fiber": null,
+        "sodiumMg": null,
+        "note": "enter from bottle label"
+      },
+      {
+        "id": "soy",
+        "name": "Reduced-sodium soy sauce",
+        "qty": "1 tbsp",
+        "kcal": null,
+        "protein": null,
+        "carbs": null,
+        "fat": null,
+        "fiber": null,
+        "sodiumMg": null,
+        "note": "enter from bottle label"
+      }
+    ],
+    "totalsFromLabelsExcludingSauces": {
+      "kcal": 1904,
+      "protein": 176.3,
+      "carbs": 207,
+      "fat": 43.4,
+      "fiber": 35.1,
+      "sodiumMg": 961
+    },
+    "lockedTargetsOld": {
+      "kcal": 1716,
+      "protein": 151,
+      "carbs": 172,
+      "fat": 48
+    },
+    "decisionPending": "Plan totals are above the old locked target. Matt picks the official target. Show both. Sodium goal of 2100 mg was set in July; confirm it still applies.",
+    "recipes": {
+      "temperature": "375F air fryer",
+      "order": [
+        "Energy drink + banana (drink before noon)",
+        "Peas + mixed veg: microwave 6 min each; no oil",
+        "Pasta: boil 112 g dry; add oil, garlic powder, pepper, salt",
+        "Salmon 112 g+: thaw, pat dry, rub; air fry ~8 min skin side down, check 145F+",
+        "Chicken 560 g+: teriyaki + soy + garlic powder; chop; air fry 8 min, flip, 8 min; check 165F+"
+      ]
+    }
+  },
+  "path": [
+    {
+      "id": "ccp",
+      "name": "AWS Cloud Practitioner (CLF-C02)",
+      "kind": "cert",
+      "hours": 25,
+      "cumulativeHours": 25,
+      "targetDate": "2026-11-11"
+    },
+    {
+      "id": "saa",
+      "name": "AWS Solutions Architect Associate (SAA-C03)",
+      "kind": "cert",
+      "hours": 90,
+      "cumulativeHours": 115,
+      "targetDate": "2026-12-14"
+    },
+    {
+      "id": "p-iam",
+      "name": "IAM project (StartupCo)",
+      "kind": "project",
+      "hours": 10,
+      "cumulativeHours": 125,
+      "targetDate": "2026-12-18"
+    },
+    {
+      "id": "p-cp",
+      "name": "CloudPipe: Terraform + GitHub Actions (rebuilt)",
+      "kind": "project",
+      "hours": 30,
+      "cumulativeHours": 155,
+      "targetDate": "2026-12-29"
+    },
+    {
+      "id": "p-th",
+      "name": "TechHealth migration (CDK, TypeScript)",
+      "kind": "project",
+      "hours": 40,
+      "cumulativeHours": 195,
+      "targetDate": "2027-01-12"
+    },
+    {
+      "id": "p-nx",
+      "name": "NextJS site on ECS Fargate + pipeline",
+      "kind": "project",
+      "hours": 60,
+      "cumulativeHours": 255,
+      "targetDate": "2027-02-03"
+    },
+    {
+      "id": "p-cs",
+      "name": "CloudSleuth: DR + observability + cost notes",
+      "kind": "project",
+      "hours": 55,
+      "cumulativeHours": 310,
+      "targetDate": "2027-02-24"
+    },
+    {
+      "id": "p-eks",
+      "name": "EKS lab (Terraform-built, torn down each session)",
+      "kind": "project",
+      "hours": 15,
+      "cumulativeHours": 325,
+      "targetDate": "2027-03-01"
+    },
+    {
+      "id": "p-ss",
+      "name": "SwiftSupport + multi-account guardrails (security)",
+      "kind": "project",
+      "hours": 40,
+      "cumulativeHours": 365,
+      "targetDate": "2027-03-16"
+    },
+    {
+      "id": "p-te",
+      "name": "TravelEase serverless contact form",
+      "kind": "project",
+      "hours": 12,
+      "cumulativeHours": 377,
+      "targetDate": "2027-03-20"
+    },
+    {
+      "id": "p-st",
+      "name": "ServerTask serverless app",
+      "kind": "project",
+      "hours": 18,
+      "cumulativeHours": 395,
+      "targetDate": "2027-03-27"
+    },
+    {
+      "id": "secplus",
+      "name": "CompTIA Security+ (optional, after the above)",
+      "kind": "cert",
+      "hours": 60,
+      "cumulativeHours": 455,
+      "targetDate": "2027-04-18"
+    }
+  ],
+  "gates": [
+    {
+      "id": "g-ccp",
+      "unlocks": "CCP exam booking window",
+      "when": "2 timed practice exams at 85% or higher"
+    },
+    {
+      "id": "g-saa",
+      "unlocks": "SAA exam",
+      "when": "3 timed full practice exams at 80% or higher"
+    },
+    {
+      "id": "g-cloudapps",
+      "unlocks": "Cloud-engineer applications",
+      "when": "SAA passed AND p-cp published on GitHub",
+      "note": "Bridge-role applications are always open."
+    },
+    {
+      "id": "g-next",
+      "unlocks": "Each project in order",
+      "when": "The previous project has a README, a decision note, and a teardown confirmed"
+    },
+    {
+      "id": "g-secplus",
+      "unlocks": "Security+ study",
+      "when": "p-ss complete"
+    }
+  ],
+  "jobSearch": {
+    "weeklyTargets": {
+      "applications": 8,
+      "outreach": 3,
+      "mockInterviews": 1,
+      "networkingEvents": 1
+    },
+    "networkingNote": "networkingEvents is PROPOSED. Confirm.",
+    "resumeVersions": [
+      "Base A (Platform Engineer)",
+      "Base B (Solutions/API)",
+      "Generic sysadmin/cloud support",
+      "Cloud engineer (TO WRITE after p-cp)"
+    ],
+    "salaryFloor": 85000,
+    "runwayMonths": "12-18",
+    "guardrail": "Employment Covenants Agreement: no solicitation of Momentum customers or employees until about 2027-09-01.",
+    "bridgeTargets": [
+      "City of Dallas",
+      "Dallas County",
+      "UT Dallas",
+      "UT Southwestern",
+      "UNT",
+      "Dallas ISD",
+      "Collin and Tarrant counties",
+      "Texas state agencies"
+    ]
+  },
+  "jobLog": {
+    "fields": [
+      "date",
+      "type",
+      "employer",
+      "role",
+      "source",
+      "contact",
+      "method",
+      "result",
+      "notes"
+    ],
+    "types": [
+      "application",
+      "interview",
+      "outreach",
+      "networking",
+      "resume-update",
+      "follow-up"
+    ],
+    "rule": "The app formats what Matt enters. It never creates or guesses an entry.",
+    "twcExport": {
+      "verifyAgainst": "TWC blank Work Search Log",
+      "columnsConfigurable": true
+    }
+  },
+  "unemployment": {
+    "cadence": "every 2 weeks",
+    "filingDay": "Wednesday",
+    "anchorDate": null,
+    "fallbackDays": "Thu-Sat of the same week",
+    "countyWeeklyMinimum": null,
+    "firstRunAsks": [
+      "Next filing Wednesday",
+      "Weekly work-search minimum from the TWC letter"
+    ],
+    "perFiling": [
+      "Report all hours and gross earnings from any work",
+      "Confirm weekly work-search log is complete",
+      "Certify answers are true"
+    ],
+    "icsExport": true,
+    "neverStore": [
+      "SSN",
+      "claim number",
+      "PIN",
+      "bank details"
+    ]
+  },
+  "sleep": {
+    "mode": "optional 14-day trial",
+    "fields": [
+      "lightsOut",
+      "wake"
+    ],
+    "gamify": false,
+    "reviewAfterDays": 14
+  },
+  "study": {
+    "ccpExamDate": null,
+    "saaExamDate": null,
+    "practiceLog": [
+      "date",
+      "exam",
+      "score",
+      "weakTopics"
+    ],
+    "method": "Practice questions first; log misses by topic; revisit sections with 2+ misses; retest after a few days."
+  },
+  "writeups": {
+    "cadence": "weekly Medium post; LinkedIn post 2-3 days later with a photo",
+    "repo": "per-week notes, screenshots, diagrams, ADRs"
+  },
+  "gamification": {
+    "domains": [
+      "Cloud",
+      "JobSearch",
+      "Body",
+      "Nutrition",
+      "Routine",
+      "Admin"
+    ],
+    "levelXp": "next level needs 100 + 50*(level-1) XP",
+    "xp": {
+      "morningChecklist": 10,
+      "gymOrWalk": 20,
+      "mealsChecklist": 20,
+      "focusBlock": 60,
+      "jobSearchBlock": 30,
+      "logEntry": 10,
+      "project": 150,
+      "examPass": 300,
+      "weeklyBoss": 200
+    },
+    "streakGraceDaysPerWeek": 1,
+    "noPenaltyOrXp": [
+      "pills1",
+      "sleep"
+    ],
+    "noStreakLoss": [
+      "meals",
+      "weighIn"
+    ]
+  }
+}
