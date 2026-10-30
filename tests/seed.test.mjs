@@ -27,8 +27,12 @@ test('seedToConfig keeps every section and adds a load time', () => {
 
 test('findBlanks lists each null, with item ids in the path', () => {
   assert.deepEqual(findBlanks(seed).sort(), [
+    'nutrition.items.sauce.carbs',
+    'nutrition.items.sauce.fat',
+    'nutrition.items.sauce.fiber',
     'nutrition.items.sauce.kcal',
     'nutrition.items.sauce.protein',
+    'nutrition.items.sauce.sodiumMg',
     'routines.evening',
     'training.weeklyDirectSets',
     'unemployment.anchorDate',

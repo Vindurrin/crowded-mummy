@@ -1,113 +1,60 @@
-import * as db from './db.js';
-import { checkSeed, seedToConfig, findBlanks } from './seed.js';
-import { buildBackup, parseBackup, backupFileName } from './backup.js';
-import { findForbidden } from './privacy.js';
+import { loadState, makeCtx } from './state.js';
+import { esc, blank } from './ui.js';
+import * as today from './screens/today.js';
+import * as train from './screens/train.js';
+import * as meals from './screens/meals.js';
+import * as path from './screens/path.js';
+import * as jobs from './screens/jobs.js';
+import * as admin from './screens/admin.js';
+import * as week from './screens/week.js';
+import * as setup from './screens/setup.js';
 
+const SCREENS = { today, train, meals, path, jobs, admin, week };
+const TABS = [['today', 'Today'], ['train', 'Train'], ['meals', 'Meals'], ['path', 'Path'], ['jobs', 'Jobs'], ['admin', 'Admin'], ['week', 'Week']];
 const app = document.getElementById('app');
-let message = '';
+const view = { date: null, weekStart: null, error: '' };
+let ctx;
 
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const ACTS = {
+  ...today.acts, ...train.acts, ...meals.acts, ...path.acts, ...jobs.acts, ...admin.acts, ...week.acts, ...setup.acts,
+  goDate: (el) => { view.date = el.dataset.date; },
+  goWeek: (el) => { view.weekStart = el.dataset.week; },
+};
 
-function pickFile() {
-  return new Promise((resolve) => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'application/json,.json';
-    input.onchange = () => resolve(input.files[0] ? input.files[0].text() : null);
-    input.click();
-  });
-}
-
-function download(name, data) {
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = name;
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-async function loadSeed() {
-  const text = await pickFile();
-  if (text === null) return;
-  let seed;
-  try {
-    seed = JSON.parse(text);
-  } catch {
-    message = 'error:This file is not valid JSON.';
-    return;
-  }
-  const problems = [...checkSeed(seed), ...findForbidden(seed).map((p) => `Private field: ${p}.`)];
-  if (problems.length) {
-    message = 'error:' + problems.join(' ');
-    return;
-  }
-  await db.saveSeedConfig(seedToConfig(seed));
-  message = 'ok:Seed file loaded.';
-}
-
-async function exportData() {
-  const config = await db.allConfig();
-  const entries = await db.allEntries();
-  download(backupFileName(), buildBackup(config, entries));
-  message = 'ok:Backup saved to your downloads.';
-}
-
-async function importData() {
-  const text = await pickFile();
-  if (text === null) return;
-  const { backup, errors } = parseBackup(text);
-  if (errors) {
-    message = 'error:' + errors.join(' ');
-    return;
-  }
-  const ok = confirm('This replaces all data on this device with the backup. Continue?');
-  if (!ok) return;
-  await db.replaceAll(backup.config, backup.entries);
-  message = `ok:Backup loaded. ${backup.entries.length} entries.`;
-}
+const tabName = () => (SCREENS[location.hash.slice(1)] ? location.hash.slice(1) : 'today');
 
 async function render() {
-  const config = await db.allConfig();
-  const entries = await db.allEntries();
-  const hasSeed = 'seedLoadedAt' in config;
-  const [kind, text] = message.split(/:(.*)/s);
-  const note = message ? `<p class="${kind}">${esc(text)}</p>` : '';
-  message = '';
-
-  let body = '<p>No seed file yet. Load it to start.</p>';
-  if (hasSeed) {
-    const seed = Object.fromEntries(Object.entries(config).filter(([k]) => k !== 'answers' && k !== 'seedLoadedAt'));
-    const blanks = findBlanks(seed);
-    body = `
-      <div class="box">
-        <p>Owner: ${esc(config.meta.owner)}. Start date: ${esc(config.meta.startDate)}.</p>
-        <p>Entries saved: ${entries.length}.</p>
-      </div>
-      <h2>Blanks to fill</h2>
-      <p>These values are empty in the seed file. The app will ask for them. It will not guess.</p>
-      <div class="box">${blanks.map((b) => `<code>${esc(b)}</code>`).join(' ')}</div>`;
-  }
-
-  app.innerHTML = `
-    <h1>Life OS</h1>
-    ${note}
-    ${body}
-    <h2>Data</h2>
-    <p>All data stays on this device.</p>
-    <button id="seed">${hasSeed ? 'Reload seed file' : 'Load seed file'}</button>
-    <button id="export" class="plain">Export backup</button>
-    <button id="import" class="plain">Import backup</button>`;
-
-  const act = (id, fn) =>
-    (document.getElementById(id).onclick = async () => {
-      try { await fn(); } catch (e) { message = 'error:' + e.message; }
-      render();
-    });
-  act('seed', loadSeed);
-  act('export', exportData);
-  act('import', importData);
+  const state = await loadState();
+  ctx = { ...makeCtx(state, view), weekStart: view.weekStart };
+  const tab = tabName();
+  const y = window.scrollY;
+  const nav = TABS.map(([id, label]) => `<a href="#${id}" class="${id === tab ? 'on' : ''}">${label}</a>`).join('');
+  const body = state.hasSeed
+    ? SCREENS[tab].html(ctx)
+    : `<h2>Welcome</h2><p>Load your seed file to start. It stays on this device.</p>${admin.dataHtml(ctx)}`;
+  app.innerHTML = `${view.error ? `<div class="toast">${esc(view.error)}</div>` : ''}${body}${state.hasSeed ? `<nav>${nav}</nav>` : ''}`;
+  window.scrollTo(0, y);
 }
+
+async function run(el, name) {
+  view.error = '';
+  try {
+    await ACTS[name](el, ctx);
+  } catch (e) {
+    view.error = e.message;
+  }
+  await render();
+}
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-act]');
+  if (el && !el.disabled) run(el, el.dataset.act);
+});
+document.addEventListener('change', (e) => {
+  const el = e.target.closest('[data-change]');
+  if (el) run(el, el.dataset.change);
+});
+window.addEventListener('hashchange', () => { view.error = ''; render(); });
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 render();

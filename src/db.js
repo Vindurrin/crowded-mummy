@@ -70,3 +70,5 @@ export const replaceAll = (config, entries) =>
     for (const [key, value] of Object.entries(config)) s.config.put(value, key);
     for (const entry of entries) s.entries.put(entry);
   });
+
+export const setConfig = (key, value) => run('readwrite', (s) => done(s.config.put(value, key)));
