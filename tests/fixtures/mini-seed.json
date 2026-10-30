@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "owner": "Test", "timezone": "America/Chicago", "startDate": "2026-11-02",
+    "daysPerWeek": 6, "dayOff": "Sun",
+    "dayBlocksMin": { "review": 20, "focus": 150, "log": 25, "jobSearch": 45 }
+  },
+  "routines": {
+    "morning": [
+      { "id": "brush", "label": "Brush teeth" },
+      { "id": "pills1", "label": "Pills 1", "gamify": false },
+      { "id": "move", "label": "Gym or walk" }
+    ],
+    "evening": null
+  },
+  "training": {
+    "schedule": { "Mon": "A", "Wed": "B" },
+    "sessions": {
+      "A": { "name": "A", "exercises": [
+        { "name": "Leg press", "sets": 3, "reps": 9 },
+        { "name": "Lat pulldown", "sets": 3, "reps": 9 }
+      ] },
+      "B": { "name": "B", "exercises": [{ "name": "Leg extension", "sets": 2, "reps": 15 }] }
+    },
+    "baselines": {
+      "Leg press": { "w": 100, "done": "9x3" },
+      "Lat pulldown": { "w": 50, "done": "9x2" }
+    },
+    "baselineDate": "2026-10-30",
+    "baselineSession": "A",
+    "weeklyDirectSets": null
+  },
+  "nutrition": { "items": [
+    { "id": "banana", "kcal": 100, "protein": 1, "carbs": 27, "fat": 0.5, "fiber": 3, "sodiumMg": 1 },
+    { "id": "salmon", "kcal": 140, "protein": 23, "carbs": 0, "fat": 5, "fiber": 0, "sodiumMg": 85, "scalesWithWeight": true, "labelWeightG": 112 },
+    { "id": "sauce", "kcal": null, "protein": null, "carbs": null, "fat": null, "fiber": null, "sodiumMg": null }
+  ] },
+  "path": [
+    { "id": "ccp", "name": "Cert one", "kind": "cert", "hours": 10, "targetDate": "2026-11-05" },
+    { "id": "saa", "name": "Cert two", "kind": "cert", "hours": 20, "targetDate": "2026-11-12" },
+    { "id": "p-iam", "name": "Project one", "kind": "project", "hours": 5, "targetDate": "2026-11-13" },
+    { "id": "p-cp", "name": "Project two", "kind": "project", "hours": 5, "targetDate": "2026-11-16" },
+    { "id": "p-ss", "name": "Project security", "kind": "project", "hours": 5, "targetDate": "2026-11-18" },
+    { "id": "secplus", "name": "Cert three", "kind": "cert", "hours": 5, "targetDate": "2026-11-19" }
+  ],
+  "gates": [
+    { "id": "g-ccp", "unlocks": "Exam one", "when": "2 timed practice exams at 85% or higher" },
+    { "id": "g-saa", "unlocks": "Exam two", "when": "3 timed full practice exams at 80% or higher" },
+    { "id": "g-cloudapps", "unlocks": "Cloud applications", "when": "SAA passed AND p-cp published", "note": "Bridge roles are always open." }
+  ],
+  "jobSearch": { "weeklyTargets": { "applications": 2, "outreach": 1, "mockInterviews": 1, "networkingEvents": 1 } },
+  "jobLog": { "fields": ["date", "type", "employer", "role", "notes"] },
+  "unemployment": { "filingDay": "Wednesday", "anchorDate": null, "perFiling": ["Report hours", "Check the log"] },
+  "gamification": {
+    "domains": ["Cloud", "JobSearch", "Body", "Nutrition", "Routine", "Admin"],
+    "levelXp": "next level needs 100 + 50*(level-1) XP",
+    "xp": { "morningChecklist": 10, "gymOrWalk": 20, "mealsChecklist": 20, "focusBlock": 60, "jobSearchBlock": 30, "logEntry": 10, "project": 150, "examPass": 300, "weeklyBoss": 200 },
+    "streakGraceDaysPerWeek": 1,
+    "noPenaltyOrXp": ["pills1", "sleep"]
+  }
+}
